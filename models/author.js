@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 //BookSchema
 const BookSchema = new Schema({
-  _id : Schema.Types.ObjectId,
   title : String,
   pages : Number,
   editorial : String,
@@ -11,25 +10,21 @@ const BookSchema = new Schema({
   createdBy : Number,
   createdAt : { type: Date },
   updatedBy : Number,
-  updatedAt : { type: Date, default: Date.now },
+  updatedAt : { type: Date, default: Date.now }
 });
 
 //AuthorSchema and Model
 const AuthorSchema = new Schema({
-  _id : Schema.Types.ObjectId,
   firstName : String,
   lastName : String,
   nationality : String,
   specialty : String,
-  books : {
-    [BookSchema]
-  },
+  books : [BookSchema],
   createdBy : Number,
   createdAt : { type: Date },
   updatedBy : Number,
-  updatedAt : { type: Date, default: Date.now },
+  updatedAt : { type: Date, default: Date.now }
 });
 
-const Provider = mongoose.model('providers', ProviderSchema);
-
-module.exports = Provider;
+const Author = mongoose.model('author', AuthorSchema);
+module.exports = Author;
