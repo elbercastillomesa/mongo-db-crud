@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 //Schema and Model
 
 const ProviderSchema = new Schema({
-  _id : [Schema.Types.ObjectId],
+  _id : Schema.Types.ObjectId,
   firstName : String,
   lastName : String,
   middleName : String,
   email : String,
   specialty : {
-    _id : [Schema.Types.ObjectId],
+    _id : Schema.Types.ObjectId,
     name : String,
     createdBy : Number,
     createdAt : { type: Date },

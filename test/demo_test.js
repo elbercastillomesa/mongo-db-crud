@@ -41,8 +41,6 @@ describe('Saving test', function(){
 
     provider.save().then( function(){
       assert(provider.isNew === false);
-      done();
-    });
-    done();
+    }).then(done,done);
   });
 });
