@@ -60,5 +60,16 @@ describe('Updating Record', function(){
     }).then(done,done);
   });
 
+  //Update Operators (Example "employerId")
+  it('Increments the employerId by 5 for all records', function(done){
+
+    Provider.updateMany( {}, { $inc: {employerId:5} }).then(function(){
+
+      Provider.findOne({_id:provider._id}).then(function(result){
+        assert(result.employerId === (provider.employerId+5) );
+      });
+
+    }).then(done,done);
+  });
 
 });
