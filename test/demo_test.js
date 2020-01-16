@@ -6,13 +6,41 @@ const Provider = require('../models/providers');
 describe('Saving test', function(){
 
   //Create Tests
-  it('save a provider in database', function(){
+  it('Saves a provider in database', function(done){
+
+    const event = new Date();
 
     var provider = new Provider({
-
+      _id : ObjectId("59bafa00c52f6a85ec5ff993"),
+      firstName : Test_1,
+      lastName : Test_1,
+      middleName : None,
+      email : test_1@hotmail.com,
+      specialty : {
+        _id : ObjectId("59baf9b7c52f6a85ec5ff962"),
+        name : Adolescent Medicine,
+        createdBy : 3838,
+        createdAt : event.toISOString(),
+        updatedBy : 82768,
+        updatedAt : event.toISOString()
+      },
+      projectedStartDate : event.toISOString(),
+      employerId : 318,
+      providerType : MD,
+      staffStatus : ACTIVE,
+      assignedTo : 66523,
+      status : READY_FOR_REVIEW,
+      createdBy : 79030,
+      createdAt : event.toISOString(),
+      updatedBy : 16969,
+      updatedAt : event.toISOString()
+      }
     });
 
-    provider.save()
+    provider.save().then( function(){
+      assert(provider.isNew === false);
+      done();
+    })
 
   });
 });
