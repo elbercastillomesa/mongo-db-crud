@@ -3,7 +3,7 @@ const assert = require('assert');
 const Provider = require('../models/providers');
 
 // Describe Tests
-describe('Finding Record', function(){
+describe('Deleting Record', function(){
 
   var provider;
 
@@ -44,19 +44,15 @@ describe('Finding Record', function(){
         }).then(done,done);
   })
 
-  //Find only one Record by firstName
-  it('Find One Record in Collection by firstName', function(done){
+  //Remove one Record by firstName
+  it('Find One Record in Collection by firstName and Delete It', function(done){
 
-    Provider.findOne({firstName:"Test_1"}).then(function(result){
-      assert(result.firstName === "Test_1");
-    }).then(done,done);
-  });
+    Provider.findOneAndRemove({firstName:"Test_1"}, {useFindAndModify: false}).then(function(){
 
-  //Find only one Record by _idObj
-  it('Find One Record in Collection by _idObj', function(done){
+      Provider.findOne({firstName:"Test_1"}).then(function(result){
+        assert(result === null)
+      });
 
-    Provider.findOne({_id:provider._id}).then(function(result){
-      assert(result._id.toString() === provider._id.toString());
     }).then(done,done);
   });
 

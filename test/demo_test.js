@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const mocha = require('mocha');
 const assert = require('assert');
 const Provider = require('../models/providers');
 
