@@ -1,11 +1,18 @@
 const mocha = require('mocha');
 const assert = require('assert');
+const Provider = require('../models/providers');
 
 // Describe Tests
-describe('demo test', function(){
+describe('Saving test', function(){
 
   //Create Tests
-  it('adds numbers', function(){
-    assert( 2+3===5 );
-  })
+  it('save a provider in database', function(){
+
+    var provider = new Provider({
+
+    });
+
+    provider.save()
+
+  });
 });
