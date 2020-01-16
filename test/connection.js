@@ -21,3 +21,11 @@ before(function(done){
     console.log('Connection Error: ',error);
   })
 });
+
+// Drop Providers with 'Test_1' from Collection before each test
+beforeEach( function(done){
+  //Drop Collection
+  mongoose.connection.collections.providers.deleteMany( {"lastName": "Test_1"}, function(){
+    done();
+  })
+})
