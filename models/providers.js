@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const ProviderSchema = new Schema({
   _id : Schema.Types.ObjectId,
-  firstName : String,
+  firstName : { type: String, required: [true, 'firstName is required'] },
   lastName : String,
   middleName : String,
   email : String,
