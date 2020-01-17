@@ -19,9 +19,59 @@
     <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 
-    <!-- Create React Component -->
-    <script type="text/javascript">
+    <!-- React Component -->
+    <script type="text/babel">
 
+      var Providers = React.createClass({
+
+        getInitialState: function(){
+          return({
+            providers: []
+          });
+        },
+        render: function(){
+
+          var providers = this.state.providers;
+          providers = providers.map(function(provider, index){
+            return(
+              <li key={index}>
+                <span className="name">{provider.firstName}</span>
+                <span className="email">{provider.email}</span>
+                <span className="date">{provider.createdAt}</span>
+              </li>
+            )
+          })
+
+          return(
+            <div id="provider-container">
+              <form id="search" onSubmit={this.handleSubmit}>
+                <label>Search:</label>
+                <input type="text" ref="fName" placeholder="First Name" required />
+                <input type="submit" value="Find" />
+              </form>
+
+              <ul>{providers}</ul>
+            </div>
+          );
+        },
+        handleSubmit: function(e){
+            e.preventDefault();
+            var firstName = this.refs.fName.value;
+
+            fetch('/api/providers?firstName=' + firstName).then(function(data){
+                return data.json();
+            }).then( json => {
+                this.setState({
+                    providers: json
+                });
+                //console.log(json);
+            });
+        }
+      });
+
+      ReactDOM.render(
+        <Providers />, document.getElementById('providers')
+      );
     </script>
   </body>
 </html>

@@ -16,7 +16,9 @@ mongoose.connect(
   }
 );
 
+//Handle static files in Public folder
 app.use(express.static('public'));
+
 //JSON data
 app.use(express.json());
 

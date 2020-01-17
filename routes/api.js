@@ -4,9 +4,11 @@ const Provider = require('../models/providers');
 
 // Get records from providers collection
 router.get('/providers', function(req, res, next){
-  Provider.find({}).then(function(providers){
+
+  Provider.find( req.query , {useFindAndModify: false} )
+  .then(function(providers){
     res.send(providers);
-  })
+  });
 });
 
 // Add a new record to providers collection
