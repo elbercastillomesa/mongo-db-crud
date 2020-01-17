@@ -42,7 +42,7 @@ describe('Finding Record', function(){
         provider.save().then( function(){
           assert(provider.isNew === false);
         }).then(done,done);
-  })
+  });
 
   //Find only one Record by firstName
   it('Find One Record in Collection by firstName', function(done){

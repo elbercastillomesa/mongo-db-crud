@@ -7,6 +7,12 @@ describe('Nesting records', function(){
 
   const event = new Date();
 
+  before(function(done){
+    mongoose.connection.collections.authors.drop(function(){
+      done();
+    });
+  });
+
   //Create test
   it('Creates an author with sub-documents', function(done){
 
