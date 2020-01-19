@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Schema and Model
-
-const SpecialtySchema : new Schema({
+const SpecialtySchema = new Schema({
   _id : Schema.Types.ObjectId,
   name : String,
   createdBy : Number,
